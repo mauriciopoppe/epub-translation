@@ -1,0 +1,28 @@
+{
+  "name": "epub-translation",
+  "id": "epub-translation",
+  "owner": {
+    "name": "mauriciopoppe"
+  },
+  "metadata": {
+    "description": "Translate EPUB files from a source language to a target language while preserving structure, HTML attributes, and metadata.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "epub-translation",
+      "source": "./",
+      "description": "Translate EPUB files from a source language to a target language while preserving structure, HTML attributes, and metadata.",
+      "version": "1.0.0",
+      "author": {
+        "name": "mauriciopoppe"
+      },
+      "keywords": [
+        "epub",
+        "translation",
+        "ebook"
+      ],
+      "category": "workflow"
+    }
+  ]
+}

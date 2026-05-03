@@ -1,0 +1,10 @@
+{
+  "name": "epub-translation",
+  "description": "Translate EPUB files from a source language to a target language while preserving structure, HTML attributes, and metadata.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Mauricio Poppe"
+  },
+  "license": "MIT",
+  "skills": ["./skills/epub-monolingual-translation"]
+}
