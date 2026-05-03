@@ -4,6 +4,13 @@ An AI-agent-agnostic project for translating EPUB files, following the [Agent Sk
 
 ## Installation
 
+### 🌐 Universal (Cursor, Windsurf, Aider, etc.)
+Install via the [skills](https://github.com/vercel-labs/skills) CLI:
+
+```bash
+npx skills add mauriciopoppe/epub-translation
+```
+
 ### Gemini CLI
 ```bash
 gemini skills install https://github.com/mauriciopoppe/epub-translation --path skills/epub-monolingual-translation
