@@ -47,6 +47,12 @@ Re-pack the EPUB. The script handles the `mimetype` rule.
 python3 ./scripts/epub_manager.py pack <TEMP_DIR> <OUTPUT_FILE>
 ```
 
+## Validation
+To ensure the scripts are functioning correctly, you can run the included unit tests:
+```bash
+python3 -m unittest discover ./tests
+```
+
 ## Guidelines
 - Always use the `.venv` python interpreter.
 - Maintain all HTML tags/attributes exactly.
