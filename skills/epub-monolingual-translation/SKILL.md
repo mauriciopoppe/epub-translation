@@ -56,4 +56,5 @@ python3 -m unittest discover ./tests
 ## Guidelines
 - Always use the `.venv` python interpreter.
 - Maintain all HTML tags/attributes exactly.
+- **CRITICAL**: Preserve all leading and trailing spaces in translations. If a source string starts or ends with a space, the translation MUST also contain it.
 - The `mimetype` file must be first and uncompressed (enforced by `epub_manager.py`).

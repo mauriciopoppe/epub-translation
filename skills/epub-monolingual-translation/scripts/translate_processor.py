@@ -34,8 +34,8 @@ def apply_translations(file_path, translations_file, output_path):
                 parts = line.split('|', 1)
                 if parts[0].startswith('ID:'):
                     id_val = int(parts[0][3:])
-                    # Unescape newlines
-                    text_val = parts[1].strip().replace('\\n', '\n')
+                    # Unescape newlines and remove ONLY the trailing newline/carriage return
+                    text_val = parts[1].rstrip('\n\r').replace('\\n', '\n')
                     trans_map[id_val] = text_val
 
     nodes, soup = get_text_nodes(file_path)

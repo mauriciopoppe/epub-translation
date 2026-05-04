@@ -69,5 +69,42 @@ class TestTranslateProcessor(unittest.TestCase):
             content = f.read()
             self.assertIn("<dc:language>fr</dc:language>", content)
 
+    def test_mixed_formatting(self):
+        mixed_html = """<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body>
+    <p>This is <i>italic</i> text.</p>
+</body>
+</html>"""
+        mixed_path = os.path.join(self.test_dir, "mixed.xhtml")
+        with open(mixed_path, "w", encoding="utf-8") as f:
+            f.write(mixed_html)
+        
+        nodes, _ = get_text_nodes(mixed_path)
+        texts = [n.string for n in nodes]
+        
+        self.assertIn("This is ", texts)
+        self.assertIn("italic", texts)
+        self.assertIn(" text.", texts)
+
+        # Translate "italic" -> "italique"
+        trans_file = os.path.join(self.test_dir, "trans_mixed.txt")
+        id_map = {n.string: i for i, n in enumerate(nodes)}
+        
+        with open(trans_file, "w", encoding="utf-8") as f:
+            # We must be careful to include the spaces that were in the original nodes if they were there
+            f.write(f"ID:{id_map['This is ']}|C'est \n")
+            f.write(f"ID:{id_map['italic']}|italique\n")
+            f.write(f"ID:{id_map[' text.']}| texte.\n")
+        
+        output_path = os.path.join(self.test_dir, "output_mixed.xhtml")
+        apply_translations(mixed_path, trans_file, output_path)
+        
+        with open(output_path, "r", encoding="utf-8") as f:
+            content = f.read()
+            # Verify structure AND spaces are maintained
+            self.assertIn("C'est <i>italique</i> texte.", content)
+
 if __name__ == "__main__":
     unittest.main()
